@@ -17,10 +17,10 @@ pip install numpy pandas requests
 
 ## Input Data
 
-The script expects a CSV file named `202306.csv` with the following columns:
-- ID: Station identifier
-- lat: Latitude of the station
-- lon: Longitude of the station
+The script expects a CSV file named `stations.csv` with the following columns:
+- ID: Station identifier of bike station
+- lat: Latitude of the bike station
+- lon: Longitude of the bike station
 
 ## Usage
 
@@ -60,10 +60,9 @@ The script generates a CSV file named `bike_station_distances.csv` containing th
 
 ## Notes
 
-- The script uses the free tier of GraphHopper API which has rate limits
 - For large datasets, the calculation may take a significant amount of time due to the rate limiting
-- The output matrix is symmetric (distance from A to B equals distance from B to A)
-
+- The output matrix isnt symmetric
+  
 ## Error Handling
 
 The script includes comprehensive error handling for:
