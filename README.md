@@ -2,14 +2,6 @@
 
 This script calculates the pairwise shortest bike network distances between bike stations using the GraphHopper API. It processes the data in batches to handle large numbers of stations efficiently.
 
-## Requirements
-
-- Python 3.6+
-- Required packages:
-  - numpy
-  - pandas
-  - requests
-
 Install the required packages using:
 ```bash
 pip install numpy pandas requests
@@ -62,6 +54,14 @@ The script generates a CSV file named `bike_station_distances.csv` containing th
 
 - For large datasets, the calculation may take a significant amount of time due to the rate limiting
 - The output matrix isnt symmetric
+
+## Requirements
+
+- Python 3.6+
+- Required packages:
+  - numpy
+  - pandas
+  - requests
   
 ## Error Handling
 
@@ -72,3 +72,9 @@ The script includes comprehensive error handling for:
 - Data processing errors
 
 All errors are logged with appropriate messages to help with debugging. 
+
+## Contributing
+
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+
