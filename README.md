@@ -49,7 +49,7 @@ This project uses Citibike station data from June 2023. The dataset includes:
 
 ### API Access
 - Subscription Plan: Pro
-- API Base URL: https://graphhopper.com/api/1
+- API Base URL: https://graphhopper.com
 - Authentication: API key required (set in .env file)
 
 ### Rate Limits & Quotas
