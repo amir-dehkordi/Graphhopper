@@ -4,6 +4,14 @@ This project analyzes and compares two types of distances between bike stations:
 1. Network distances (using GraphHopper API) - actual biking route distances
 2. Geodesic distances (using geopy) - straight-line distances
 
+## Dataset Information
+
+This project uses Citibike station data from June 2023. The dataset includes:
+- Station locations (latitude/longitude)
+- Station IDs and names
+- Station status information
+- Data source: [Citibike System Data](https://citibikenyc.com/system-data)
+  
 ## Quick Start
 
 1. Install dependencies:
@@ -38,13 +46,6 @@ python src/analyze_distances.py
 └── requirements.txt      # Python dependencies
 ```
 
-## Dataset Information
-
-This project uses Citibike station data from June 2023. The dataset includes:
-- Station locations (latitude/longitude)
-- Station IDs and names
-- Station status information
-- Data source: [Citibike System Data](https://citibikenyc.com/system-data)
 ## GraphHopper API Configuration
 
 ### API Access
