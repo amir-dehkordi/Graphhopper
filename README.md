@@ -38,6 +38,13 @@ python src/analyze_distances.py
 └── requirements.txt      # Python dependencies
 ```
 
+## Dataset Information
+
+This project uses Citibike station data from June 2023. The dataset includes:
+- Station locations (latitude/longitude)
+- Station IDs and names
+- Station status information
+- Data source: [Citibike System Data](https://citibikenyc.com/system-data)
 ## GraphHopper API Configuration
 
 ### API Access
