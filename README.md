@@ -1,68 +1,73 @@
-# Bike Station Distance Calculator
+# Bike Station Distance Analysis
 
-This script calculates the pairwise shortest bike network distances between bike stations using the GraphHopper API. It processes the data in batches to handle large numbers of stations efficiently.
+This project analyzes and compares two types of distances between bike stations:
+1. Network distances (using GraphHopper API) - actual biking route distances
+2. Geodesic distances (using geopy) - straight-line distances
 
-Install the required packages using:
-```bash
-pip install numpy pandas requests
+## Quick Start
+
+1. Install dependencies:
+
+pip install -r requirements.txt
+
+
+2. Add your GraphHopper API key to `.env`:
+```
+GRAPHHOPPER_API_KEY=your_api_key_here
 ```
 
-## Input Data
-
-The script expects a CSV file named `stations.csv` with the following columns:
-- ID: Station identifier of bike station
-- lat: Latitude of the bike station
-- lon: Longitude of the bike station
-
-## Usage
-
-1. Set your GraphHopper API key as an environment variable:
+3. Run the analysis:
 ```bash
-# On Windows
-set GRAPHHOPPER_API_KEY=your_api_key_here
-
-# On Linux/Mac
-export GRAPHHOPPER_API_KEY=your_api_key_here
+python src/bike_station_distances.py
+python src/calculate_geodesic_distances.py
+python src/analyze_distances.py
 ```
 
-2. Run the script:
-```bash
-python bike_station_distances.py
+## Project Structure
+
 ```
-
-### How it Works
-
-1. The full 1836x1836 matrix is divided into 80x80 windows
-2. Each window represents distance calculations between 80 origin and 80 destination stations
-3. Windows are processed sequentially, respecting the 20.1s rate limit
-4. Results are combined into the final distance matrix
+.
+├── data/                  # Station data and generated distance files
+│   ├── stations.csv      # Input station data
+│   ├── graphhopper_distance.csv  # Network distances
+│   └── geopy_distance.csv        # Geodesic distances
+├── src/                  # Analysis scripts
+├── result/               # Output visualizations and analysis
+│   ├── matrix_detailed_view.png      # Distance matrix visualization
+│   └── analysis_results/             # Detailed analysis outputs
+└── requirements.txt      # Python dependencies
+```
 
 ## GraphHopper API Configuration
 
+### API Access
 - Subscription Plan: Pro
-- Rate Limit: 1 request per 20.1 seconds
+- API Base URL: https://graphhopper.com/api/1
+- Authentication: API key required (set in .env file)
+
+### Rate Limits & Quotas
+- Rate Limit: 1 request per 20 seconds
 - Matrix Size Limit: 80x80 per request
-- Vehicle Type: bike
+- Daily Request Limit: Varies by subscription plan
+- Vehicle Type: bike (optimized for cycling routes)
 
 
-## Output
+The following visualization shows how we collect the shortest network distance matrix between bike stations using the GraphHopper API:
 
-The script generates a CSV file named `bike_station_distances.csv` containing the pairwise distances between all stations. The distances are in meters.
+![Matrix Detailed View](matrix_detailed_view.png)
 
+## Dependencies
 
-## Notes
+- Python 3.7+
+- pandas
+- numpy
+- scipy
+- matplotlib
+- seaborn
+- geopy
+- requests
+- python-dotenv
 
-- For large datasets, the calculation may take a significant amount of time due to the rate limiting
-- The output matrix isnt symmetric
-
-## Requirements
-
-- Python 3.6+
-- Required packages:
-  - numpy
-  - pandas
-  - requests
-  
 ## Error Handling
 
 The script includes comprehensive error handling for:
@@ -71,10 +76,9 @@ The script includes comprehensive error handling for:
 - Missing API key
 - Data processing errors
 
-All errors are logged with appropriate messages to help with debugging. 
+## Notes
 
-## Contributing
+- The GraphHopper API has daily usage limits, so the network distance calculation may take some time
 
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
 
